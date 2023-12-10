@@ -9,9 +9,21 @@
 </template>
 
 <script>
+import {onBeforeUnmount} from "vue";
+
 export default {
   name: "ModalView",
   setup(props, {emit}) {
+    let onKeydown = (event) => {
+      if (event.key === 'Escape') {
+        emit('closeModal')
+      }
+    }
+    window.addEventListener('keydown', onKeydown)
+
+    onBeforeUnmount(() => {
+      window.removeEventListener('keydown', onKeydown);
+    })
     return {
       emit,
     }
