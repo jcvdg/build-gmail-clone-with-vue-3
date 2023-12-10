@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import {ref} from 'vue';
 import {format} from "date-fns";
 import axios from 'axios';
 
@@ -31,7 +32,7 @@ export default {
     let { data: emails } = await axios.get('http://localhost:3000/emails/')
     return {
       format,
-      emails,
+      emails: ref(emails),
     }
   },
   computed: {
