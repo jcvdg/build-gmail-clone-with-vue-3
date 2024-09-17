@@ -1,23 +1,24 @@
 <template>
-  <div id="app">      
-    <Suspense>
-      <template #default>
-        <MailScreen />
-      </template>
-      <template #fallback>
-        Loading...
-      </template>
-    </Suspense>
-  </div>
+  <h1>VMail Inbox</h1>
+
+  <Suspense>
+    <!-- Main thing we want to show. Tags are optional. -->
+    <template #default>
+      <MailTable />
+    </template>
+    <!-- What to show while data is loading. This is optional if blank screen is acceptable. -->
+    <template #fallback>
+      Loading ...
+    </template>
+  </Suspense>
 </template>
 
 <script>
-import MailScreen from '@/components/MailScreen.vue';
-
+import MailTable from "@/components/MailTable.vue";
 export default {
   name: 'App',
   components: {
-    MailScreen
+    MailTable
   }
 };
 </script>
